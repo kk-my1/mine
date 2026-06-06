@@ -1,0 +1,3 @@
+CMD: 'echo "test"'
+HPARAMS:
+  test_param: 123

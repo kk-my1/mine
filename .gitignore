@@ -1,0 +1,54 @@
+# 训练相关（最重要！解决你的大文件问题）
+logs/
+checkpoints/
+models/
+weights/
+*.pt
+*.pth
+*.bin
+*.ckpt
+# Python项目通用忽略文件
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.env
+.venv
+env/
+venv/
+ENV/
+*.env
+*.conf
+config.ini
+secrets.toml
+
+# 日志文件
+logs/
+*.log
+
+# 临时文件
+tmp/
+temp/
+*.tmp
+
+# 系统文件
+.DS_Store
+Thumbs.db
+pretrained_models/
+*.msgpack

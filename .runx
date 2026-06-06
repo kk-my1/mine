@@ -1,0 +1,6 @@
+LOGROOT: /data/MYWang/PriSA-main-2/tmp/log
+FARM: local
+
+local:
+  SUBMIT_CMD: 'bash'
+  RESOURCES: {}

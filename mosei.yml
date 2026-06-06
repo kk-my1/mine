@@ -1,0 +1,45 @@
+CMD: 'CUDA_VISIBLE_DEVICES=0 python main.py' #如果要改设备，只改这里，下面不改
+HPARAMS:
+  contrastive_learning: True     # 开启对比学习
+                   
+  T: 0.07                        # （旧的 InfoNCE 温度参数，可保留）
+  d: 128                         # 投影维度
+  logger: True
+  dataset_name: 'mosei_dataset'
+  modality: 'audio video fusion'
+  task_f_in_dim: [512]
+  task_f_hid_dim: [512]
+  B: 64
+  gpu_ids: 0
+  decrese_metric: True
+  aug: 'reverse_multiscale'
+  crop_scale: [0.08]
+  cutout_scale: [0.1]
+  multiscale_p: [0.08]
+  reverse_p: [0.1]
+  stride: [3]
+  T: [0.1]
+  # alpha: [0.01]
+  # beta: [0.01]
+  d: [0.9]
+  seed: [2021,3480,694]
+  criterion: L1Loss
+  epochs: 100
+  bert_path: ./pretrained_models
+  embed_dim: 128
+  epsilon: 0.05
+
+  unaligned: True
+  using_bert: True
+  num_layers_sa: 3
+  base_lr: [1e-4]
+  text_lr: [1e-5]
+  audio_lr: [1e-3]
+  video_lr: [1e-4]
+  attn_mask: [True]
+  # contrastive_learning: True
+  drop_last_batch: True
+  max_patience: 3
+  bert_path: "/data/MYWang/PriSA-main-2/PriSA-main/pretrained_models"
+  data_path: "/data/MYWang/prisa/PriSA/data/mosei_unaligned_50.pkl"
+  dec_lambda: 0.1
