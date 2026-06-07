@@ -239,16 +239,16 @@ class prisa_trainer(trainer_base):
                 z[1::2] = f2
                 return z
 
-            v_vt_z = prepare_interleaved_tensor(state_dict['v_private'], state_dict['vt_fusion'])
-            a_at_z = prepare_interleaved_tensor(state_dict['a_private'], state_dict['at_fusion'])
-            at_vt_z = prepare_interleaved_tensor(state_dict['vt_fusion'], state_dict['at_fusion'])
+            # v_vt_z = prepare_interleaved_tensor(state_dict['v_private'], state_dict['vt_fusion'])
+            # a_at_z = prepare_interleaved_tensor(state_dict['a_private'], state_dict['at_fusion'])
+            # at_vt_z = prepare_interleaved_tensor(state_dict['vt_fusion'], state_dict['at_fusion'])
 
-            v_vt_loss = self.cfg.alpha * self.cl_criterion(v_vt_z, target)
-            a_at_loss = self.cfg.alpha * self.cl_criterion(a_at_z, target)
-            at_vt_loss = self.cfg.beta * self.cl_criterion(at_vt_z, target)
-            # v_vt_loss = self.cfg.alpha * (self.cl_criterion(state_dict['v_private'],state_dict['vt_fusion'],target) + self.cl_criterion(state_dict['vt_fusion'],state_dict['v_private'],target))
-            # a_at_loss = self.cfg.alpha * (self.cl_criterion(state_dict['a_private'],state_dict['at_fusion'],target) + self.cl_criterion(state_dict['at_fusion'],state_dict['a_private'],target))
-            # at_vt_loss = self.cfg.beta * (self.cl_criterion(state_dict['vt_fusion'],state_dict['at_fusion'],target) + self.cl_criterion(state_dict['at_fusion'],state_dict['vt_fusion'],target))
+            # v_vt_loss = self.cfg.alpha * self.cl_criterion(v_vt_z)
+            # a_at_loss = self.cfg.alpha * self.cl_criterion(a_at_z)
+            # at_vt_loss = self.cfg.beta * self.cl_criterion(at_vt_z)
+            v_vt_loss = self.cfg.alpha * (self.cl_criterion(state_dict['v_private'],state_dict['vt_fusion'],target) + self.cl_criterion(state_dict['vt_fusion'],state_dict['v_private'],target))
+            a_at_loss = self.cfg.alpha * (self.cl_criterion(state_dict['a_private'],state_dict['at_fusion'],target) + self.cl_criterion(state_dict['at_fusion'],state_dict['a_private'],target))
+            at_vt_loss = self.cfg.beta * (self.cl_criterion(state_dict['vt_fusion'],state_dict['at_fusion'],target) + self.cl_criterion(state_dict['at_fusion'],state_dict['vt_fusion'],target))
 
             if(self.cfg.contrastive_learning):
                 loss += at_vt_loss
